@@ -1,0 +1,41 @@
+#user-signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    height: 70vh;
+}
+
+#signup-div{
+    height: 90%;
+    text-align: center;
+    width: 80%;
+    box-shadow: 0px 0px 5px 5px;
+}
+
+#signup-text{
+    font-size: 1.5em;
+}
+
+#signup-div div{
+    height: 10%;
+    margin-top: 5%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+@media screen and (min-width:768px) {
+    #user-signup{
+        height: 75vh;
+    }
+
+    #signup-div{
+        width: 40%;
+    }    
+}
+
+@media screen and (min-width:1349px) {
+    #signup-div{
+        width: 30%;
+    }
+}

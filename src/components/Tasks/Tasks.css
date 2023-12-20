@@ -1,0 +1,186 @@
+#welcome-user{
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 2%;
+}
+
+button{
+    cursor: pointer;
+}
+
+#tasks{
+    height: 77vh;
+}
+
+#wel-msg{
+    flex: 1;
+    font-size: 1.5em;
+}
+
+#addtask-button button{
+    height: 100%;
+    color: white;
+    background-color: rgb(65, 65, 250);
+}
+
+#task-heading{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#titles-div{
+    display: flex;
+}
+
+#titles-div div{
+    width: 30%;
+    text-align: center;
+}
+
+#titles-admin-div{
+    display: flex;
+}
+
+#titles-admin-div div{
+    width: 30%;
+    text-align: center;
+}
+
+#user-tasks{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3%;
+}
+
+#user-tasks div{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#admin-tasks{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3%;
+}
+
+#admin-tasks div{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#edit-button{
+    border: 1px solid black;
+    background-color: rgb(82, 79, 250);
+    cursor: pointer;
+    color: white;
+}
+
+#delete-button{
+    border: 1px solid black;
+    background-color: #fc4141;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+#render-tasks{
+    margin-top: 5%;
+}
+
+.addOrupdate-panel{
+    width: 95%;
+    margin: 3% auto;
+    box-shadow: 0px 0px 5px 5px;;
+}
+
+#cancel-button{
+    background-color: rgb(252, 65, 65);
+}
+
+textarea{
+    width: 100%;
+    height: 100%;
+}
+
+#radio-div{
+    display: flex;
+}
+
+#radio-div div{
+    display: flex;
+    width: 100%;
+    gap: 3%;
+}
+
+#render-tasks{
+    overflow: scroll;
+}
+
+#render-tasks::-webkit-scrollbar{
+    display: none;
+}
+
+#render-tasks{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+@media screen and (min-width:768px) {
+    #tasks{
+        height: 70vh;
+    }
+
+    #task-details{
+        height: 100%;
+    }
+
+    #titles-div {
+        padding-right: 3%;
+    }
+
+    #titles-div div{
+        width: 17%;
+    }
+
+    #user-tasks{
+        flex-wrap: nowrap;
+        gap: 1%;
+        padding-right: 1%;
+    }
+
+    #user-tasks div{
+        width: 20%;
+    }
+
+    #edit-button{
+        width: 5%;
+    }
+
+    #delete-button{
+        width: 5%;
+    }
+
+    .addOrupdate-panel{
+        width: 60%;
+    }
+
+    .addOrupdate-panel div{
+        padding: 1%;
+    }
+
+}
+
+@media screen and (min-width:1349px){
+    .addOrupdate-panel{
+        padding: 1%;
+        width: 40%;
+    }
+}
+

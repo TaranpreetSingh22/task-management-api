@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Task Management API Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This API facilitates CRUD (Create, Read, Update, Delete) operations on tasks. Each task includes essential attributes such as a title, description, due date, and status  (pending, In Progress, completed).
 
-In the project directory, you can run:
+### User Authentication
 
-### `npm start`
+User authentication in this Task Management API is implemented using JSON Web Tokens (JWT). The process involves user token-based verification for subsequent API requests.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+when a user/admin logs in a token is generated with jwt.sign() method which contains the username and password and a secret key, i have stored the secret key in environment variables so when a user tries to fetch the taks or update or delete or add new taks the token is verified in backend with same username, password and secret key if token is valid the particular operations are executed else returns unauthorized.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The Admin details are already stored in database so when a admin logs in theirs details are compared with the values in database and if found the token is generated and all the taks irrespective of users will be displayed.
 
-### `npm test`
+### Task Operations
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Establish an API endpoint for adding new tasks.
+- Create an API endpoint to retrieve a list of tasks for a specific user (Admin users can access all tasks).
+- Implement features to update task details and mark tasks as completed or delete them.
 
-### `npm run build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I have used React.js as frontend development using CRA template.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Database
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Database used is mongodb Atlas.
+backend is made using node.js express.
 
-### `npm run eject`
+### Available endpoints
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- User Signup :
+    api endpoint      : '/api/usersignup'
+    details           : when a user signups the details are stored in database.
+    expected request  : the user details such as name, email, password etc.
+    expected response : successful signup with status codes or error message if any error occurs with status codes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- User Login :
+    api endpoint      : '/api/userlogin'
+    details           : when a user logs in, the user is authorized and if found the user is able to perform task 
+                        operations.
+    expected request  : user details such as username and password.
+    expected response : if authorized successful login message with relevant status code else error message showcasing 
+                        unauthorized.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Admin Login :
+    api endpoint      : '/api/adminlogin'
+    details           : when admin logs in, the admin is authorized and if found the admin can view all the tasks 
+                        irrespective of users. 
+                        operations.
+    expected request  : admin details such as username and password.
+    expected response : if authorized successful login message with relevant status code else error message showcasing 
+                        unauthorized.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Fetch Tasks :
+    api endpoint      : '/api/taskdetails/:userId'
+    details           : the authorized users tasks will be displayed as soon as they log in, with a userId for displaying 
+                        the tasks which belongs particular user only. But the Admin can access all tasks irrespective of user.
+    expected request  : respective userId of user.
+    expected response : list of all tasks available for user with status code and error message if any error occur.
 
-## Learn More
+- Add Tasks :
+    api endpoint      : '/api/tasks/:userId'
+    details           : the authorized users can add new tasks to their account with a userId for adding tasks to the 
+                        particular user only.
+    expected request  : task list such as title, description, due date and status.
+    expected response : successful task added message with status codes or error message if any error occurs.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Updating Tasks :
+    api endpoint      : '/api/updatetasks/:userId'
+    details           : the authorized users can add update any tasks with a userId for updating tasks to the 
+                        particular user only.
+    expected request  : task list such as title, description, due date and status.
+    expected response : successful update task message with status codes or error message if any error occurs.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Deleting Tasks :
+    api endpoint      : '/api/deletetasks'
+    details           : the authorized users can delete any tasks with a userId for deleting tasks to the 
+                        particular user only.
+    expected request  : task id which is required to delete.
+    expected response : successful delete task message with status codes or error message if any error occurs.
 
-### Code Splitting
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- requires node.js installed.
 
-### Analyzing the Bundle Size
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Clone the repository: `git clone https://github.com/your-username/task-management-api.git`
+2. Navigate to the project directory: `cd task-management-api`
+3. Install dependencies: `install neccessary dependencies using [npm install] command`
+4. Create a .env file : `add the backend connection details mentioned in server.js file in .env file.`
 
-### Making a Progressive Web App
+### Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Start the API: `use command [npm run demon]`
+2. Start Frontend: `use command [npm start]`
